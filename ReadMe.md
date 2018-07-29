@@ -15,15 +15,10 @@ This endpoint creates a new account with minimum balance of zero.
 
 This endpoints trigger transfer of money between two parties.
 
+##Technology Used
 
-##Build Application
-
-Execute below command to build and run the application:
-
-```
-mvn clean install spring-boot:run
-```
-
+1. Spring-Boot
+2. Java8
 
 ##H2 Embedded Database
 
@@ -31,6 +26,14 @@ To access embedded database, use below url :
 
 ```
 http://localhost:8090/h2_console
+```
+
+##Build Application
+
+Execute below command to build and run the application:
+
+```
+mvn clean install spring-boot:run
 ```
 
 
