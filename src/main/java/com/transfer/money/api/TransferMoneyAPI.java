@@ -22,14 +22,16 @@ public class TransferMoneyAPI {
 
     @PostMapping("/transfer")
     public String initiateTransferMoney(@RequestBody final TransferMoney transferMoney){
-        log.info(" Credit Account {} ", transferMoney.getCreditAccount());
-        log.info(" Debit Account {}" , transferMoney.getDebitAccount());
+        log.info("Begin transfer of money between parties.");
+        log.debug("Account to be credited : {} " , transferMoney.getCreditAccount());
+        log.debug("Account to be debited : {} " , transferMoney.getDebitAccount());
         return transferMoneyService.transferAmount(transferMoney);
     }
 
     @PostMapping("/create")
     public String initiateAccountOpening(@RequestBody  final String accountNumber){
-        log.info("Account to open {}" , accountNumber);
+        log.info("Begin : Open new account.");
+        log.debug("Account to open {}" , accountNumber);
         return transferMoneyService.openAccount(accountNumber);
     }
 }

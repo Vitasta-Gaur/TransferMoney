@@ -1,5 +1,8 @@
 package com.transfer.money.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,6 +11,8 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "account")
+@Getter
+@Setter
 public class Account {
 
     @Id
@@ -22,22 +27,6 @@ public class Account {
 
     public Account(final String accountNumber , final BigDecimal amount){
         this.accountNumber = accountNumber;
-        this.amount = amount;
-    }
-
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 }

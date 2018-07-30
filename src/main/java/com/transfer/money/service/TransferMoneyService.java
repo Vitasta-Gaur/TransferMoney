@@ -20,18 +20,20 @@ public class TransferMoneyService implements ITransferMoney {
 
     @Override
     public String transferAmount(final TransferMoney transferMoneyAttributes) {
-        log.debug("Transfer initiated between parties.");
+        log.debug("Transfer initiated between parties with account numbers , Debit  &  Credit : {} " , transferMoneyAttributes.getDebitAccount() , transferMoneyAttributes.getCreditAccount());
         if(!(checkIfAccountExists(transferMoneyAttributes.getCreditAccount()) && checkIfAccountExists(transferMoneyAttributes.getDebitAccount())))
             throw new TransferMoneyException("Transfer cannot be initiated. Debit or Credit Account doesn't exist");
 
         //Debit from debit account.
         Account debitAccount = fetchAccount(transferMoneyAttributes.getDebitAccount());
+        log.debug(" Debit Account - Amount {} " , debitAccount.getAmount());
         if(validateDebit(debitAccount,transferMoneyAttributes.getAmount()))
         transferMoneyRepository.save(new Account(debitAccount.getAccountNumber(),debitAccount.getAmount().subtract(transferMoneyAttributes.getAmount())));
 
 
         //Credit from credit account.
         Account creditAccount = fetchAccount(transferMoneyAttributes.getCreditAccount());
+        log.debug("Credit Account - Amount {} " , creditAccount.getAmount());
         transferMoneyRepository.save(new Account(creditAccount.getAccountNumber(),creditAccount.getAmount().add(transferMoneyAttributes.getAmount())));
 
         return "Transfer done successfully!";
@@ -39,6 +41,10 @@ public class TransferMoneyService implements ITransferMoney {
 
     @Override
     public String openAccount(final String accountNumber) {
+
+        if(!accountNumber.matches("^[a-zA-Z0-9]+$"))
+            throw new TransferMoneyException("Account number can only be alphanumeric.Invalid account-number supplied.");
+
         if(checkIfAccountExists(accountNumber))
             throw new TransferMoneyException("Account already exists!.");
 

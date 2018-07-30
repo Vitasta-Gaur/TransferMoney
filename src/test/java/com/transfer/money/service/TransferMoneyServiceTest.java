@@ -54,6 +54,14 @@ public class TransferMoneyServiceTest {
     }
 
     @Test
+    @DisplayName("Should throw exception when account number is not alphanumeric")
+    public void shouldThrowExceptionWhenAccountIsNotAlphaNum(){
+        assertThrows(TransferMoneyException.class, () -> {
+            transferMoneyService.openAccount("12345=@#");
+        },"Account number can only be alphanumeric.Invalid account-number supplied.");
+    }
+
+    @Test
     @DisplayName("Should throw exception when debit or credit accounts are not already available")
     public void shouldThrowExceptionWhenTransferAccountNotExists(){
         when(transferMoneyRepository.existsById(anyString())).thenReturn(false);

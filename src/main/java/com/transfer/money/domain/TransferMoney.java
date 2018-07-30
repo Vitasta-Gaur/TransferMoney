@@ -1,9 +1,13 @@
 package com.transfer.money.domain;
 
 import com.fasterxml.jackson.annotation.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
+@Getter
+@Setter
 @JsonPropertyOrder({"creditAccount","debitAccount","amount"})
 public class TransferMoney {
 
@@ -21,32 +25,5 @@ public class TransferMoney {
         this.creditAccount = creditAccount;
         this.debitAccount = debitAccount;
         this.amount =amount;
-    }
-
-    public String getCreditAccount() {
-        return creditAccount;
-    }
-
-    //@JsonSetter(value = "creditAccount")
-    public void setCreditAccount(String creditAccount) {
-        this.creditAccount = creditAccount;
-    }
-
-    public String getDebitAccount() {
-        return debitAccount;
-    }
-
-   // @JsonSetter(value = "debitAccount")
-    public void setDebitAccount(String debitAccount) {
-        this.debitAccount = debitAccount;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    //@JsonSetter(value = "amount")
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
     }
 }
