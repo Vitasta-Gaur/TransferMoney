@@ -1,16 +1,16 @@
 package com.transfer.money.service;
 
 import com.transfer.money.domain.Account;
-import com.transfer.money.domain.TransferMoney;
+import com.transfer.money.dto.TransferMoney;
 import com.transfer.money.repository.TransferMoneyRepository;
 import com.transfer.money.service.exception.TransferMoneyException;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -21,7 +21,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @Slf4j
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class TransferMoneyServiceTest {
 
     @Mock
@@ -51,14 +51,6 @@ public class TransferMoneyServiceTest {
         assertThrows(TransferMoneyException.class, () -> {
             transferMoneyService.openAccount("123456789");
         },"Account already exists!.");
-    }
-
-    @Test
-    @DisplayName("Should throw exception when account number is not alphanumeric")
-    public void shouldThrowExceptionWhenAccountIsNotAlphaNum(){
-        assertThrows(TransferMoneyException.class, () -> {
-            transferMoneyService.openAccount("12345=@#");
-        },"Account number can only be alphanumeric.Invalid account-number supplied.");
     }
 
     @Test

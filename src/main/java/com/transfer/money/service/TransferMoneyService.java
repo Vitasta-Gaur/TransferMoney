@@ -1,7 +1,7 @@
 package com.transfer.money.service;
 
 import com.transfer.money.domain.Account;
-import com.transfer.money.domain.TransferMoney;
+import com.transfer.money.dto.TransferMoney;
 import com.transfer.money.repository.TransferMoneyRepository;
 import com.transfer.money.service.exception.TransferMoneyException;
 import lombok.extern.slf4j.Slf4j;
@@ -41,9 +41,6 @@ public class TransferMoneyService implements ITransferMoney {
 
     @Override
     public String openAccount(final String accountNumber) {
-
-        if(!accountNumber.matches("^[a-zA-Z0-9]+$"))
-            throw new TransferMoneyException("Account number can only be alphanumeric.Invalid account-number supplied.");
 
         if(checkIfAccountExists(accountNumber))
             throw new TransferMoneyException("Account already exists!.");

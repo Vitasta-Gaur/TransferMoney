@@ -37,4 +37,9 @@ mvn clean install spring-boot:run
 ```
 
 
+## Endpoints
+
+POST : http://localhost:8090/create
+{"accountNumber" : "123444"}
+
 

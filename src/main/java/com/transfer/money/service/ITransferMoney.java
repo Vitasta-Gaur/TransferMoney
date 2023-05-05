@@ -1,6 +1,6 @@
 package com.transfer.money.service;
 
-import com.transfer.money.domain.TransferMoney;
+import com.transfer.money.dto.TransferMoney;
 
 public interface ITransferMoney {
 

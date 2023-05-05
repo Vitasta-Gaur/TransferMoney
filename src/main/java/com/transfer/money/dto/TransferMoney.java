@@ -1,4 +1,4 @@
-package com.transfer.money.domain;
+package com.transfer.money.dto;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;

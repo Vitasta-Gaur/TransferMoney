@@ -1,6 +1,6 @@
 package com.transfer.money.api;
 
-import com.transfer.money.domain.TransferMoney;
+import com.transfer.money.dto.TransferMoney;
 import com.transfer.money.service.ITransferMoney;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,12 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import javax.ws.rs.Produces;
-
-import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @RestController
-@Produces(APPLICATION_JSON)
 @Slf4j
 public class TransferMoneyAPI {
 
